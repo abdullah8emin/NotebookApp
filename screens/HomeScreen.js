@@ -1,12 +1,22 @@
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, ScrollView } from 'react-native'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Context } from '../context/BlogContext'
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
 
 export default function HomeScreen() {
-    const { state, addBlogPost, deleteBlogPost } = useContext(Context);
+    const { state, addBlogPost, deleteBlogPost, getBlogPosts } = useContext(Context);
     const navigation = useNavigation();
+    useEffect(()=>{
+        getBlogPosts();
+
+        const listener = navigation.addListener('focus', ()=>{
+            getBlogPosts();
+        });
+        return ()=>{
+            listener.remove();
+        };
+    }, []);
     return (
         <View style={{ flex: 1 }}>
 
