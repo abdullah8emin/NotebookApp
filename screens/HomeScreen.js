@@ -16,47 +16,47 @@ export default function HomeScreen() {
                 keyExtractor={(blogPost) => blogPost.id}
                 renderItem={({ item }) => {
                     return (
-                        <View style={styles.row}>
-                            <TouchableOpacity onPress={()=> navigation.navigate('BlogScreen', {item})}>
+                        <TouchableOpacity onPress={() => navigation.navigate('Blog', { id:item.id })}>
+                            <View style={styles.row}>
                                 <Text style={styles.text}>{item.title}</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
-                                <FontAwesome style={styles.icon} name="trash-o" size={24} color="black" />
-                            </TouchableOpacity>
-                        </View>
+                                <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
+                                    <FontAwesome style={styles.icon} name="trash-o" size={24} color="black" />
+                                </TouchableOpacity>
+                            </View>
+                        </TouchableOpacity>
                     )
                 }} />
 
 
-            <View style={{ bottom: 10 }} >
+            {/* < View style={{ bottom: 10 }} >
                 <TouchableOpacity onPress={addBlogPost} style={styles.buttonStyle}>
                     <Text style={styles.buttonText}>EKLE</Text>
                 </TouchableOpacity>
-            </View>
+            </View > */}
 
-        </View>
+        </View >
     )
 }
 
 const styles = StyleSheet.create({
-    buttonStyle: {
-        position: 'fixed',
-        backgroundColor: 'green',
-        width: '40%',
-        height: 30,
-        left: '30%',
-        top: 5,
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontWeight: 'bold',
-        fontSize: '20px',
-        borderRadius: 10
-    },
-    buttonText: {
-        color: 'white',
-        fontWeight: 'bold',
-        fontSize: 15
-    },
+    // buttonStyle: {
+    //     position: 'fixed',
+    //     backgroundColor: 'green',
+    //     width: '40%',
+    //     height: 30,
+    //     left: '30%',
+    //     top: 5,
+    //     justifyContent: 'center',
+    //     alignItems: 'center',
+    //     fontWeight: 'bold',
+    //     fontSize: '20px',
+    //     borderRadius: 10
+    // },
+    // buttonText: {
+    //     color: 'white',
+    //     fontWeight: 'bold',
+    //     fontSize: 15
+    // },
     icon: {
         flex: 1,
         right: 5,
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
         height: 35,
         margin: 5,
         borderRadius: 10,
-        justifyContent:'space-between',
+        justifyContent: 'space-between',
         alignItems: 'center',
     },
 })
