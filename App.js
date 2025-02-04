@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
 import CreateScreen from './screens/CreateScreen';
+import BlogScreen from './screens/BlogScreen';
 import { Provider } from './context/BlogContext';
 
 
@@ -17,6 +18,7 @@ export default function App() {
         <Stack.Navigator screenOptions={{ headerTitle: 'Blog App' }}>
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Create" component={CreateScreen} />
+          <Stack.Screen name="BlogScreen" component={BlogScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
