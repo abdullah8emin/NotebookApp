@@ -1,15 +1,15 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'
 import React, { useContext } from 'react'
-import { Context } from '../context/BlogContext'
-import BlogPostForm from '../components/BlogPostForm';
+import { Context } from '../context/NotebookContext'
+import NotebookPostForm from '../components/NotebookPostForm';
 
 export default function EditScreen({ route }) {
-    const { state, editBlogPost } = useContext(Context);
+    const { state, editNotebookPost } = useContext(Context);
     const id = route.params.id
     const item = state.find((item) => item.id === route.params.id);
 
     return (
-        <BlogPostForm onSubmit={(title, content) => { editBlogPost(id, title, content) }} initialValues={{ title: item.title, content: item.content }} 
+        <NotebookPostForm onSubmit={(title, content) => { editNotebookPost(id, title, content) }} initialValues={{ title: item.title, content: item.content }} 
         isEditable={true}/>
     )
 }

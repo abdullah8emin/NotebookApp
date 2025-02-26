@@ -1,17 +1,17 @@
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, ScrollView } from 'react-native'
 import React, { useContext, useEffect } from 'react'
-import { Context } from '../context/BlogContext'
+import { Context } from '../context/NotebookContext'
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
 
 export default function HomeScreen() {
-    const { state, addBlogPost, deleteBlogPost, getBlogPosts } = useContext(Context);
+    const { state, addNotebookPost, deleteNotebookPost, getNotebookPosts } = useContext(Context);
     const navigation = useNavigation();
     useEffect(()=>{
-        getBlogPosts();
+        getNotebookPosts();
 
         const listener = navigation.addListener('focus', ()=>{
-            getBlogPosts();
+            getNotebookPosts();
         });
         return ()=>{
             listener.remove();
@@ -23,13 +23,13 @@ export default function HomeScreen() {
 
             <FlatList
                 data={state}
-                keyExtractor={(blogPost) => blogPost.id}
+                keyExtractor={(notebookPost) => notebookPost.id}
                 renderItem={({ item }) => {
                     return (
-                        <TouchableOpacity onPress={() => navigation.navigate('Blog', { id:item.id })}>
+                        <TouchableOpacity onPress={() => navigation.navigate('Notebook', { id:item.id })}>
                             <View style={styles.row}>
                                 <Text style={styles.text}>{item.title}</Text>
-                                <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
+                                <TouchableOpacity onPress={() => deleteNotebookPost(item.id)}>
                                     <FontAwesome style={styles.icon} name="trash-o" size={24} color="black" />
                                 </TouchableOpacity>
                             </View>
@@ -39,7 +39,7 @@ export default function HomeScreen() {
 
 
             {/* < View style={{ bottom: 10 }} >
-                <TouchableOpacity onPress={addBlogPost} style={styles.buttonStyle}>
+                <TouchableOpacity onPress={addNotebookPost} style={styles.buttonStyle}>
                     <Text style={styles.buttonText}>EKLE</Text>
                 </TouchableOpacity>
             </View > */}

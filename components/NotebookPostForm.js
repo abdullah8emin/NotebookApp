@@ -2,10 +2,10 @@ import { StyleSheet, TextInput, View, Text, TouchableOpacity } from 'react-nativ
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native';
 
-export default function BlogPostForm({ onSubmit, initialValues, isEditable }) {
+export default function NotebookPostForm({ onSubmit, initialValues, isEditable }) {
     const navigation = useNavigation();
     const [title, setTitle] = useState(initialValues ? initialValues.title : '');
-    const [content, setContent] = useState(initialValues ? initialValues.content : '')
+    const [content, setContent] = useState(initialValues ? initialValues.content : '');
     return (
 
         <View style={{ flex: 1 }}>

@@ -1,8 +1,8 @@
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 import React, { useContext } from 'react';
-import { Context } from '../context/BlogContext';
+import { Context } from '../context/NotebookContext';
 
-export default function BlogScreen({ route }) {
+export default function NotebookScreen({ route }) {
     const { state } = useContext(Context);
     const item = state.find((item)=> item.id === route.params.id);
     return (
